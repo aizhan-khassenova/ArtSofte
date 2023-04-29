@@ -1,0 +1,40 @@
+﻿@model IEnumerable<ArtSofteEmployees.Models.ProgrammingLanguage>
+
+@{
+    ViewData["Title"] = "Список языков программирования";
+}
+<nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-action="Index" asp-controller="">Главная</a></li>
+        <li class="breadcrumb-item active" aria-current="page">@ViewBag.Title</li>
+    </ol>
+</nav>
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-secondary">Добавить</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.LanguageName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.LanguageName)
+            </td>
+            <td>
+                    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.ProgrammingLanguageId">Редактировать</a>
+                    <a class="btn btn-info" asp-action="Details" asp-route-id="@item.ProgrammingLanguageId">Детали</a>
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.ProgrammingLanguageId">Удалить</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
